@@ -24,8 +24,8 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
             } else {
                 console.log(cb);
             }
-        })
-    })
+        });
+    });
 
     socket.on("client_list_all_messages", messages => {
         const template_client = document.getElementById("message-user-template").innerHTML;
