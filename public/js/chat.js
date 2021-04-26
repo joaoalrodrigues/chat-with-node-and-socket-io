@@ -30,6 +30,8 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
     socket.on("client_list_all_messages", messages => {
         const template_client = document.getElementById("message-user-template").innerHTML;
         const template_admin = document.getElementById("admin-template").innerHTML;
+        const messages_element = document.getElementById("messages");
+        messages_element.innerHTML = "";
 
         messages.forEach(message => {
             const isUser = message.admin_id == null;
@@ -38,7 +40,7 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
                 message: message.text,
                 email
             })
-            document.getElementById("messages").innerHTML += rendered;
+            messages_element.innerHTML += rendered;
         });
 
         socket.on("admin_send_to_client", (message) => {
